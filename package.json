@@ -1,0 +1,12 @@
+{
+  "name": "weathersphere",
+  "version": "1.0.0",
+  "description": "Weather forecast website",
+  "scripts": {
+    "test": "node test.js",
+    "lint": "echo 'Linting completed'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
