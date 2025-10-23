@@ -1,5 +1,5 @@
 // WeatherSphere Pipeline Test
-console.log('WeatherSphere CI/CD Test Starting...');
+console.log('🌤️  WeatherSphere CI/CD Test Starting...');
 
 // Test 1: Basic functionality
 function validateWeatherData(data) {
@@ -23,30 +23,30 @@ class WeatherService {
 
 // Run tests
 function runTests() {
-  console.log('Running tests...');
+  console.log('🧪 Running tests...');
   
   // Test 1: Data validation
   const testData = WeatherService.getForecast('Moscow');
   const isValid = validateWeatherData(testData);
   
   if (!isValid) {
-    throw new Error('Data validation test failed');
+    throw new Error('❌ Data validation test failed');
   }
-  console.log('Data validation test passed');
+  console.log('✅ Data validation test passed');
   
   // Test 2: Temperature range
   if (testData.temperature < -50 || testData.temperature > 50) {
-    throw new Error('Temperature range test failed');
+    throw new Error('❌ Temperature range test failed');
   }
-  console.log('Temperature range test passed');
+  console.log('✅ Temperature range test passed');
   
   // Test 3: City name
   if (testData.city !== 'Moscow') {
-    throw new Error('City name test failed');
+    throw new Error('❌ City name test failed');
   }
-  console.log('City name test passed');
+  console.log('✅ City name test passed');
   
-  console.log('All tests passed! WeatherSphere is ready!');
+  console.log('🎉 All tests passed! WeatherSphere is ready!');
   return true;
 }
 
