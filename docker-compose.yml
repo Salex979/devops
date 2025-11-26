@@ -1,0 +1,28 @@
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - service-a
+      - service-b
+    networks:
+      - microservices-net
+
+  service-a:
+    build: ./service_a
+    environment:
+      - SERVICE_B_URL=http://service-b:5001
+    depends_on:
+      - service-b
+    networks:
+      - microservices-net
+
+  service-b:
+    build: ./service_b
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge

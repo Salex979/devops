@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: my-nginx
+    ports:
+      - "80:80"
+    networks:
+      - microservices-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+
+  service-a:
+    image: service-a
+    environment:
+      - SERVICE_B_URL=http://service-b:5001
+    networks:
+      - microservices-net
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
+  service-b:
+    image: service-b
+    networks:
+      - microservices-net
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
+networks:
+  microservices-net:
+    driver: overlay
